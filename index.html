@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>LimaSafe</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main id="container">
+    <!-- PANEL LATERAL IZQUIERDO -->
+    <aside id="form-panel">
+      <h1 id="tituloApp">LimaSafe</h1>
+
+      <!-- Menú de navegación -->
+      <div id="menu">
+        <button onclick="mostrarFormulario('registro')">Registrarse</button>
+        <button onclick="mostrarFormulario('login')">Iniciar Sesión</button>
+        <button onclick="mostrarFormulario('reporte')">Reportar Zona</button>
+      </div>
+
+      <!-- FORMULARIO DE REGISTRO -->
+      <div id="registroContainer" style="display: none;">
+        <h2>Registro de Usuario</h2>
+        <form id="registroForm">
+          <label for="nombre">Nombre:</label>
+          <input type="text" id="nombre" required />
+
+          <label for="apellidos">Apellidos:</label>
+          <input type="text" id="apellidos" required />
+
+          <label for="correo">Correo electrónico:</label>
+          <input type="email" id="correo" required />
+
+          <label for="contrasena">Contraseña:</label>
+          <input type="password" id="contrasena" required />
+
+          <label for="dni">DNI (8 dígitos):</label>
+          <input type="text" id="dni" required />
+
+          <button type="submit">Registrarse</button>
+        </form>
+      </div>
+
+      <!-- FORMULARIO DE LOGIN -->
+      <div id="loginContainer" style="display: none;">
+        <h2>Iniciar Sesión</h2>
+        <form id="loginForm">
+          <label for="loginCorreo">Correo electrónico:</label>
+          <input type="email" id="loginCorreo" required />
+
+          <label for="loginContrasena">Contraseña:</label>
+          <input type="password" id="loginContrasena" required />
+
+          <button type="submit">Ingresar</button>
+        </form>
+      </div>
+
+      <!-- FORMULARIO DE REPORTE -->
+      <div id="reporteContainer" style="display: none;">
+        <h2>Reportar Zona Peligrosa</h2>
+        <form id="reporteForm">
+          <label for="descripcion">Descripción:</label>
+          <textarea id="descripcion" required></textarea>
+
+          <label for="riesgo">Nivel de Riesgo:</label>
+          <select id="riesgo" required>
+            <option value="">-- Seleccionar --</option>
+            <option value="Alto">Alto</option>
+            <option value="Medio">Medio</option>
+            <option value="Bajo">Bajo</option>
+          </select>
+
+          <label for="coordenadas">Coordenadas:</label>
+          <input type="text" id="coordenadas" readonly required />
+
+          <button type="submit">Enviar Reporte</button>
+        </form>
+      </div>
+
+      <!-- FILTRO Y BÚSQUEDA -->
+      <div id="buscadorZona" style="padding-top: 20px;">
+        <input type="text" id="buscarZona" placeholder="🔍 Buscar zona peligrosa..." style="width: 100%; padding: 8px; border-radius: 8px; border: 1px solid #ccc;" />
+
+        <select id="filtrarRiesgo" style="width: 100%; margin-top: 10px; padding: 8px; border-radius: 8px; border: 1px solid #ccc;">
+          <option value="">-- Filtrar por riesgo --</option>
+          <option value="Alto">Alto</option>
+          <option value="Medio">Medio</option>
+          <option value="Bajo">Bajo</option>
+        </select>
+      </div>
+    </aside>
+
+    <!-- MAPA -->
+    <section id="map"></section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
